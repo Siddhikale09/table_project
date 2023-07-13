@@ -1,5 +1,27 @@
-<h1>show article:</h1>
-</br>
-<h2>ID:</h2><%= @art.id %></br>
-<h2>Title:</h2><%= @art.title %></br>
-<h2>Description:</h2><%= @art.description %></br>
+<h1>Showing article details</h1>
+<div id="page-content">
+  <h2 class="text-center mt-4"><%= @art.title %></h2>
+
+<p><strong>Title: </strong><%= @art.title %></p>
+<p><strong>Description: </strong><%= @art.description %></p>
+<div class="container">
+<div class="row justify-content-md-center">
+  <div class="col-8 mt-4">
+    <div class="card text-center shadow mb-5 bg-white rounded">
+      <div class="card-header font-italic">
+        by Creator
+      </div>
+      <div class="card-body">
+        <div class="card-text text-left"><%= simple_format(@art.description) %></div>
+        <%= link_to "Edit", edit_article_path(@art), class: "btn btn-outline-info" %>
+        <%= link_to "Delete", article_path(@art), class: "btn btn-outline-danger", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+      <div class="card-footer text-muted">
+        <small>Created <%= time_ago_in_words(@art.created_at) %> ago, 
+        edited <%= time_ago_in_words(@art.updated_at) %> ago</small>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
