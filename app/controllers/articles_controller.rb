@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-before_action :set_article, only: [:show, :edit, :update, :destroy]
+before_action :set_art, only: [:show, :edit, :update, :destroy]
     def show
     
 end
@@ -35,15 +35,15 @@ def update
 end
 
 def destroy
-
 @art.destroy
 redirect_to articles_path
 end
 
-private
+
 def set_art
     @art = Article.find(params[:id])
 end
+
 def set_param
     params.require(:article).permit(:title, :description)
 end
