@@ -17,6 +17,7 @@ end
 
 def create
 @art = Article.new(set_param)
+@art.user = User.first
 if @art.save
 flash[:notice] = "article created!!"
 redirect_to @art
