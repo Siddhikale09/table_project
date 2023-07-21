@@ -18,7 +18,7 @@ def create
 @user = User.new(params.require(:user).permit(:username, :email, :password))
 if @user.save
     flash[:notice] = 'User created successfully!'
-    redirect_to articles_path
+    redirect_to @user
 else
     render :new, status: :unprocessable_entity
 end
@@ -28,7 +28,7 @@ def update
 @user = User.find(params[:id])
 if @user.update(params.require(:user).permit(:username, :email, :password))
 flash[:notice] = "your account has been updated successfully!"
-redirect_to articles_path
+redirect_to @user
 else
 render :edit, status: :unprocessable_entity
 end
