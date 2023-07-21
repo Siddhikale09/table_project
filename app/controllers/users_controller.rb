@@ -3,6 +3,9 @@ def show
 @user = User.find(params[:id])
 @art = @user.articles
 end
+def index
+@user = User.all
+end
 def new
 @user = User.new
 end
